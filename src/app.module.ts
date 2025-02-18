@@ -13,4 +13,4 @@ import { TenantModule } from './tenant/tenant.module';
   controllers: [AppController, CatsController, AccountController, AdminController, DocsController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

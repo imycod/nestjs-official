@@ -16,11 +16,10 @@ export class TenantConnectionFactory {
 
 
 // 3. 动态工厂创建连接（关键部分）
-export const tenantConnectionFactory = {
+export const tenantConnectionProvider = {
     provide: 'TENANT_CONNECTION',
     useFactory: async (tenantService: TenantService, tenantId: string) => {
         const config = tenantService.getConfig(tenantId);
-        console.log('config', config)
         return new TenantConnection(config!);
     },
     inject: [TenantService, 'TENANT_ID'] // 注入动态参数
