@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node", // node程序应用
+            "request": "launch", // 启动一个调试会话
+            "name": "learning-nestjs", // 随意命名
+            "skipFiles": [ // 跳过nodejs内部文件调试，比如fs os path
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\main.ts", // 启动程序入口
+            "preLaunchTask": "tsc: build - tsconfig.json", // 在调试前通常由typescript编译任务
+            "outFiles": [ // 编译后输出位置
+                "${workspaceFolder}/dist/**/*.js"
+            ],
+            "sourceMaps": true // 源代码映射，方便找到源代码ts文件
+        }
+    ]
+}
