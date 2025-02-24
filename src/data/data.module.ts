@@ -7,4 +7,16 @@ import { TenantModule } from 'src/tenant/tenant.module';
   controllers: [DataController],
   providers: [],
 })
-export class DataModule { }
+export class DataModule {
+  constructor() {
+    console.log('DataModule constructor');
+  }
+
+  onModuleInit() {
+    console.log('DataModule onModuleInit');
+  }
+
+  onModuleDestroy() {
+    console.log('DataModule onModuleDestroy');
+  }
+}

@@ -1,17 +1,20 @@
 import { Controller, Get, Inject, Req } from '@nestjs/common';
-import { ContextIdFactory, ModuleRef } from '@nestjs/core';
+import { TenantConnectionService } from 'src/tenant/tenant-connection.service';
 import { TenantConnection } from 'src/tenant/tenant.connection';
-import { TenantService } from 'src/tenant/tenant.service';
-import { Request } from 'express';
 
 @Controller('data')
 export class DataController {
+    private readonly connection: TenantConnection;
     constructor(
-        @Inject('TENANT_CONNECTION') private readonly connection: TenantConnection,
-    ) { }
+        private readonly tenantConnectionService: TenantConnectionService,
+    ) {
+        console.log('DataController - constructor'); // 添加日志
+        this.connection = this.tenantConnectionService.createConnection();
+    }
 
     @Get()
     async getData() {
-        return this.connection.query('SELECT * FROM users');
+        const users = await this.connection.query('select * from user')
+        return users;
     }
 }

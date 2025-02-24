@@ -1,17 +1,31 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { IConfig } from './interface/connection.type';
 
 // TenantService 是一个单例（Singleton）服务，在整个应用中共享
 @Injectable()
 export class TenantService {
-    constructor() {
-        console.log('TenantService - constructor'); // 添加日志
-    }
     private readonly tenants = new Map([
-        ['tenant1', { host: 'dbA', port: 3306, username: '', password: '', database: '' }],
-        ['tenant2', { host: 'dbB', port: 3307, username: '', password: '', database: '' }],
+        ['tenant1', {
+            host: 'localhost',
+            port: 3306,
+            username: 'user1',
+            password: 'password1',
+            database: 'db1'
+        }],
+        ['tenant2', {
+            host: 'localhost',
+            port: 3306,
+            username: 'user2',
+            password: 'password2',
+            database: 'db2'
+        }],
     ]);
 
-    getConfig(tenantId: string) {
-        return this.tenants.get(tenantId);
+    getConfig(tenantId: string): IConfig {
+        const config = this.tenants.get(tenantId);
+        if (!config) {
+            throw new NotFoundException(`Tenant configuration not found for tenant: ${tenantId}`);
+        }
+        return config;
     }
 }
