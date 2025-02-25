@@ -15,12 +15,15 @@ describe('AdminController', () => {
     await app.init();
   });
 
+  it('should return admin', async () => {
+    await request(app.getHttpServer())
+      .get('/')
+      .set('Host', 'admin.example.com')
+      .expect(200)
+      .expect('Admin');
+  });
 
-  it('should return admin', async ()=> {
-    await request(app.getHttpServer()).get('/').set('Host', 'admin.example.com').expect(200).expect('Admin');
-  }) 
-
-  afterAll(async () => {  
+  afterAll(async () => {
     await app.close();
-  })
+  });
 });

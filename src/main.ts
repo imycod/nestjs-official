@@ -4,8 +4,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  app.set('query parser', 'extended')
+  app.set('query parser', 'extended');
   await app.listen(3011);
 }
 bootstrap();
-

@@ -4,6 +4,6 @@ import { CustomConfigService } from './custom-config.service';
 
 @Module({
   providers: [CustomConfigService],
-  exports: [CustomConfigService]
+  exports: [CustomConfigService],
 })
-export class CustomConfigModule extends ConfigurableModuleClass { }
+export class CustomConfigModule extends ConfigurableModuleClass {}

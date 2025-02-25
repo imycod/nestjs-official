@@ -16,7 +16,9 @@ describe('CatsController', () => {
   describe('findAll', () => {
     it('should return "This action returns all cats"', () => {
       const mockRequest: Request = {} as Request;
-      expect(catsController.findAll(mockRequest)).toBe('This action returns all cats');
+      expect(catsController.findAll(mockRequest)).toBe(
+        'This action returns all cats',
+      );
     });
   });
 
@@ -40,5 +42,4 @@ describe('CatsController', () => {
       expect(catsController.findCat(undefined!)).toBeUndefined();
     });
   });
-  
 });

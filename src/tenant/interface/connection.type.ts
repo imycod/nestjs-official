@@ -1,7 +1,7 @@
 export interface IConfig {
-    host: string;
-    port: number;
-    username: string;
-    password: string;
-    database: string;
+  host: string;
+  port: number;
+  username: string;
+  password: string;
+  database: string;
 }

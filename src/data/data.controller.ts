@@ -4,17 +4,17 @@ import { TenantConnection } from 'src/tenant/tenant.connection';
 
 @Controller('data')
 export class DataController {
-    private readonly connection: TenantConnection;
-    constructor(
-        private readonly tenantConnectionService: TenantConnectionService,
-    ) {
-        console.log('DataController - constructor'); // 添加日志
-        this.connection = this.tenantConnectionService.createConnection();
-    }
+  private readonly connection: TenantConnection;
+  constructor(
+    private readonly tenantConnectionService: TenantConnectionService,
+  ) {
+    console.log('DataController - constructor'); // 添加日志
+    this.connection = this.tenantConnectionService.createConnection();
+  }
 
-    @Get()
-    async getData() {
-        const users = await this.connection.query('select * from user')
-        return users;
-    }
+  @Get()
+  async getData() {
+    const users = await this.connection.query('select * from user');
+    return users;
+  }
 }

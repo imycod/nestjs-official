@@ -6,7 +6,7 @@ import * as request from 'supertest';
 
 config(); // 加载环境变量
 
-console.log('process.env----', process.env)
+console.log('process.env----', process.env);
 
 describe('AccountController', () => {
   let app: INestApplication;
@@ -42,7 +42,11 @@ describe('AccountController', () => {
         .get('/')
         .set('Host', host)
         .expect(404)
-        .expect({ message: 'Cannot GET /', error: 'Not Found', statusCode: 404 });
+        .expect({
+          message: 'Cannot GET /',
+          error: 'Not Found',
+          statusCode: 404,
+        });
     } catch (error) {
       throw error; // 重新抛出异常以便测试框架捕获
     }
